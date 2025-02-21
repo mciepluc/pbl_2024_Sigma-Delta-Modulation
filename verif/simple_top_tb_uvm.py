@@ -197,8 +197,9 @@ class SDM_scoreboard(uvm_component):
         model = SDM_model_wrapper(order=sdm_order)
         model_data = model.generate_data(self.received_audio_data)
         #print(f"Model: {model.sdm_signal}")
-        self.compare(self.received_sdm_data, model.sdm_signal)
+        passed = self.compare(self.received_sdm_data, model.sdm_signal)
         self.report(self.received_audio_data)
+        assert passed
 
     def compare(self, got, exp):
         self.val_got = [x[1].data for x in got[:len(exp)]]
