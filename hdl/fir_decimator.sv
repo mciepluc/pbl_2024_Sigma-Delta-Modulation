@@ -14,12 +14,25 @@ module fir_decimator #(
 );
 
     // Define the filter coefficients (low-pass anti-aliasing filter)
-    logic signed [COEFF_WIDTH-1:0] coeff [TAPS] = '{
-         -16'sd119, 16'sd197, 16'sd692, 16'sd0,
-         -16'sd2613, -16'sd2855, 16'sd5177, 16'sd18681,
-         16'sd25580, 16'sd18681, 16'sd5177, -16'sd2855,
-         -16'sd2613, 16'sd0, 16'sd692, 16'sd197, -16'sd119
-    };
+    logic signed [COEFF_WIDTH-1:0] coeff [TAPS];
+
+    assign coeff[0] = -16'sd119;
+    assign coeff[1] = 16'sd197;
+    assign coeff[2] = 16'sd692;
+    assign coeff[3] = 16'sd0;
+    assign coeff[4] = -16'sd2613;
+    assign coeff[5] = -16'sd2855;
+    assign coeff[6] = 16'sd5177;
+    assign coeff[7] = 16'sd18681;
+    assign coeff[8] = 16'sd25580;
+    assign coeff[9] = 16'sd18681;
+    assign coeff[10] = 16'sd5177;
+    assign coeff[11] = -16'sd2855;
+    assign coeff[12] = -16'sd2613;
+    assign coeff[13] = 16'sd0;
+    assign coeff[14] = 16'sd692;
+    assign coeff[15] = 16'sd197;
+    assign coeff[16] = -16'sd119;
 
     // Delay line for the input data
     logic signed [DATA_WIDTH-1:0] delay_line [TAPS-1:0];
